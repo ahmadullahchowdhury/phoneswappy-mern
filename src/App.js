@@ -5,6 +5,7 @@ import Main from './Components/Layout/Main';
 import Error from './Components/Error/Error';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import Home from './Components/Home/Home';
 // import Blog from './Components/Blog/Blog';
 // import Home from './Components/Home/Home';
 // import AddService from './Components/AddService/AddService';
@@ -29,6 +30,11 @@ function App() {
         {
           path: "/register",
           element: <Register></Register>,
+          errorElement: <Error></Error>
+        },
+        {
+          path: "/",
+          element: <Home></Home>,
           errorElement: <Error></Error>
         },
 

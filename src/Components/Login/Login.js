@@ -44,22 +44,23 @@ const Login = () => {
 
         const userDB = {
           name: user.displayName,
-          email: user.email
+          email: user.email,
+          userRole: 'Buyer'
         }
 
-        //   fetch("http://localhost:5000/users", {
-        //     method: "POST",
-        //     headers: {
-        //       "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify(userDB),
-        //   })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //       console.log(data);
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userDB),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
 
-        //     })
-        //     .catch((err) => console.error(err));
+            })
+            .catch((err) => console.error(err));
 
         navigate(from, {replace: true})
 
@@ -81,8 +82,14 @@ const Login = () => {
       <div>
         <div className="hero min-h-screen bg-base-200">
           <div className="hero-content ">
+          <div className="-mt-6">
+            <h1 className="m-3 p-3 text-4xl font-bold">Welcome to!</h1>
+            <h1 className="m-3 p-3 text-5xl font-bold">PhoneSwappy!</h1>
+            <h1 className="m-3 p-3 text-3xl font-bold">Please Login now!</h1>
+            <h1 className="m-3 p-3 text-3xl font-bold">To Buy and Sell Phone!</h1>
+            </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-              <h1 className="m-3 p-3 text-6xl font-bold">Login now!</h1>
+
               <form onSubmit={loginBtn}  className="card-body">
                 <div className="form-control">
                   <label className="label">
