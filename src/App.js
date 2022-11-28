@@ -6,6 +6,14 @@ import Error from './Components/Error/Error';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Home from './Components/Home/Home';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Addproduct from './Components/Addproduct/Addproduct';
+import Myproducts from './Components/Myproducts/Myproducts';
+import Mybuyers from './Components/Mybuyers/Mybuyers';
+import Allseller from './Components/Allseller/Allseller';
+import Allbuyer from './Components/Allbuyer/Allbuyer';
+import Reporteditems from './Components/Reporteditems/Reporteditems';
+import Blogs from './Components/Blog/Blogs';
 // import Blog from './Components/Blog/Blog';
 // import Home from './Components/Home/Home';
 // import AddService from './Components/AddService/AddService';
@@ -36,6 +44,49 @@ function App() {
           path: "/",
           element: <Home></Home>,
           errorElement: <Error></Error>
+        },
+        {
+          path: "/blog",
+          element: <Blogs></Blogs>,
+          errorElement: <Error></Error>
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard></Dashboard>,
+          errorElement: <Error></Error>,
+          children: [
+
+            {
+              path: "/dashboard/addproduct",
+              element: <Addproduct></Addproduct>,
+              errorElement: <Error></Error>
+            },
+            {
+              path: "/dashboard/myproducts",
+              element: <Myproducts></Myproducts>,
+              errorElement: <Error></Error>
+            },
+            {
+              path: "/dashboard/mybuyers",
+              element: <Mybuyers></Mybuyers>,
+              errorElement: <Error></Error>
+            },
+            {
+              path: "/dashboard/allseller",
+              element:<Allseller></Allseller> ,
+              errorElement: <Error></Error>
+            },
+            {
+              path: "/dashboard/allbuyer",
+              element: <Allbuyer></Allbuyer> ,
+              errorElement: <Error></Error>
+            },
+            {
+              path: "/dashboard/reporteditems",
+              element: <Reporteditems></Reporteditems> ,
+              errorElement: <Error></Error>
+            },
+          ]
         },
 
 

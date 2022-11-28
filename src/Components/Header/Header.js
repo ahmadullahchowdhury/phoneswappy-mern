@@ -1,26 +1,32 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import { fireAuthContext } from "../../Context/Context";
 
 const Header = () => {
-  const { user } = useContext(fireAuthContext);
-  
+  const { user, userSingOut } = useContext(fireAuthContext);
+
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [ userdata, setUserData] = useState('')
+  const  navigate = useNavigate()
 
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/user?email=${user.email}`)
-  //   })
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/user?email=${user.email}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setUserData(data);
-        console.log(data)
+  const handleSignOut = () => {
+    userSingOut()
+      .then(() => {
+
+        navigate("/login")
+      })
+      .catch((error) => {
+        // An error happened.
       });
-  }, [user.email]);
+      navigate(from, {replace: true})
+  };
 
-  console.log(userdata.userRole)
+
+
+
+
 
   return (
     <div>
@@ -84,6 +90,14 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
+            <>
+          <Link to="/dashboard" className="btn">
+            Dashboard
+          </Link>
+          <Link to="/blog" className="btn">
+              Blog
+            </Link>
+            </>
 
             {/* <li>
               <a>Item 1</a>
@@ -91,54 +105,31 @@ const Header = () => {
             <li>
               <a>Item 3</a>
             </li> */}
-            { userdata?.userRole === 'Buyer' ? (
-          <>
-            <Link to="/myreview" className="btn">
-              My Orders
-            </Link>
-          </>
-        ) : userdata?.userRole === 'Seller' ? (
-          <>
-            <Link to="/myreview" className="btn">
-            Add A product
-            </Link>
-            <Link to="/addservice" className="btn">
-            My Products
-            </Link>
-            <Link to="/addservice" className="btn">
-            My buyers
-            </Link>
 
-          </>
-        ): (
-
-            <>
-
-            <Link to="/myreview" className="btn">
-              All Sellers
-            </Link>
-            <Link to="/addservice" className="btn">
-              All Buyers
-            </Link>
-            <Link to="/addservice" className="btn">
-              Reported Items
-            </Link>
-            </>
-)
-
-
- }
 
  
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
+            {
+                user?.email ? (
+                    <>
+                                    <Link onClick={handleSignOut} className="btn">
+              Log out
+            </Link>
+                    </>
+                ) : (
+                    <>
+                             <Link to="/login" className="btn">
             Login
           </Link>
           <Link to="/register" className="btn">
             Register
           </Link>
+                    </>
+                )
+            }
+ 
         </div>
       </div>
     </div>

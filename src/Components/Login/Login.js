@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import app from "../Firebase/Firebase.init";
@@ -10,9 +10,19 @@ const auth = getAuth(app);
 const Login = () => {
   const [error, setError] = useState("");
   let location = useLocation();
+  const [dbEmail, setDbEmail ] = useState('')
   let from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
-  const { signUser, googleLoginPopUp } =  useContext(fireAuthContext)
+  const { user, signUser, googleLoginPopUp } =  useContext(fireAuthContext)
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/user?email=${user?.email}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDbEmail(data.email)
+        console.log(data.email)
+      });
+  }, [user?.email]);
 
   const loginBtn = (e) => {
       e.preventDefault();
@@ -42,27 +52,35 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
 
+        
+
         const userDB = {
           name: user.displayName,
           email: user.email,
           userRole: 'Buyer'
         }
 
-          fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(userDB),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
+        if(dbEmail){
+            return 0
+        }else{
 
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userDB),
             })
-            .catch((err) => console.error(err));
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+    
+              })
+              .catch((err) => console.error(err));
+    
+          navigate(from, {replace: true})
+        }
 
-        navigate(from, {replace: true})
 
         // ...
       }).catch((error) => {
