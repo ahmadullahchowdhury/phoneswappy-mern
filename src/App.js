@@ -14,6 +14,7 @@ import Allseller from './Components/Allseller/Allseller';
 import Allbuyer from './Components/Allbuyer/Allbuyer';
 import Reporteditems from './Components/Reporteditems/Reporteditems';
 import Blogs from './Components/Blog/Blogs';
+import Categorydetails from './Components/Categorydetails/Categorydetails';
 // import Blog from './Components/Blog/Blog';
 // import Home from './Components/Home/Home';
 // import AddService from './Components/AddService/AddService';
@@ -42,12 +43,19 @@ function App() {
         },
         {
           path: "/",
+          loader :() => fetch(`http://localhost:5000/cat`),
           element: <Home></Home>,
           errorElement: <Error></Error>
         },
         {
           path: "/blog",
           element: <Blogs></Blogs>,
+          errorElement: <Error></Error>
+        },
+        {
+          path: "/category/:id",
+          element: <Categorydetails></Categorydetails> ,
+          loader :({params}) => fetch(`http://localhost:5000/category/${params.id}`),
           errorElement: <Error></Error>
         },
         {
