@@ -14,11 +14,10 @@ const Header = () => {
   const handleSignOut = () => {
     userSingOut()
       .then(() => {
-
         navigate("/login")
       })
       .catch((error) => {
-        // An error happened.
+        
       });
       navigate(from, {replace: true})
   };

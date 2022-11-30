@@ -1,7 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { fireAuthContext } from '../../Context/Context';
+
 
 const Allbuyer = () => {
     const [buyers, setBuyers] = useState([]);
+    const {deleteUser} = useContext(fireAuthContext)
+
+    const handleDelete = ( name, id) => {
+        const proceed = window.confirm(`Are you sure to delete this: ${name}`)
+        // console.log(proceed)
+        
+        if(proceed){
+            fetch(`http://localhost:5000/users/${id}`, {
+                method: "DELETE" 
+            }).then(res => res.json()).then(data => {
+                console.log(data)
+                toast.success("Deleted Successfully", { autoClose: 1000 });
+                // if(data.deletedCount > 0) {
+    
+                //     const remaining = displayEmail.filter(disEmail => disEmail._id !== id )
+                //     setDisplayEmail(remaining)
+                // }
+            }).catch((err) => console.error(err));
+            
+        }
+    }
 
     useEffect(() => {
       fetch(`http://localhost:5000/usersingle?userRole=Buyer`)
@@ -10,6 +35,10 @@ const Allbuyer = () => {
             setBuyers(data);
         });
     }, []);
+
+   const handleDeleteUser = () => {
+            console.log('clicked')
+    }
   
     console.log(buyers);
     return (
@@ -21,12 +50,12 @@ const Allbuyer = () => {
   
   <p className="m-2 border-2 rounded-xl p-2 border-indigo-600">{buyer.name}</p>
   <p className="m-2 border-2 rounded-xl p-2 border-indigo-600 ">{buyer.email}</p>
-  <p className="btn  btn-error">Delete Buyer</p>
+  <p onClick={  () => handleDelete(buyer.name, buyer._id)  }className="btn  btn-error">Delete Buyer</p>
   
           </div> )
        }
-  
         </div>
+        <ToastContainer autoClose={1000}  />
       </div>
     );
 };

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Allseller = () => {
   const [sellers, setSellers] = useState([]);
@@ -9,7 +11,27 @@ const Allseller = () => {
       .then((data) => {
         setSellers(data);
       });
-  }, []);
+  }, [sellers]);
+
+  const handleDelete = ( name, id) => {
+    const proceed = window.confirm(`Are you sure to delete this: ${name}`)
+    // console.log(proceed)
+    
+    if(proceed){
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: "DELETE" 
+        }).then(res => res.json()).then(data => {
+            console.log(data)
+            toast.success("Deleted Successfully", { autoClose: 1000 });
+            // if(data.deletedCount > 0) {
+
+            //     const remaining = displayEmail.filter(disEmail => disEmail._id !== id )
+            //     setDisplayEmail(remaining)
+            // }
+        }).catch((err) => console.error(err));
+        
+    }
+}
 
   console.log(sellers);
 
@@ -22,12 +44,13 @@ const Allseller = () => {
 
 <p className="m-2 rounded-xl p-2 border-2 border-indigo-600">{seller.name}</p>
 <p className="m-2 rounded-xl p-2 border-2 border-indigo-600">{seller.email}</p>
-<p className="btn  btn-error">Delete Seller</p>
+<p onClick={ () => handleDelete(seller.name, seller._id)}  className="btn  btn-error">Delete Seller</p>
 
         </> )
      }
 
       </div>
+      <ToastContainer autoClose={1000}  />
     </div>
   );
 };

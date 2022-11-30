@@ -13,6 +13,7 @@ import {
 } from "firebase/auth";
 
 const auth = getAuth(app);
+const user1 = auth.currentUser
 
 export const fireAuthContext = createContext();
 
@@ -35,6 +36,10 @@ const UserContext = ({ children }) => {
   const userSingOut = () => {
     return signOut(auth);
   };
+
+  const deleteUser = () => {
+     return deleteUser(user1)
+  }
 
   const profileUpdate = (profile) => {
     return updateProfile(auth.currentUser, profile);
@@ -68,6 +73,7 @@ const UserContext = ({ children }) => {
     createUser,
     signUser,
     userSingOut,
+    deleteUser
   };
   return (
     <fireAuthContext.Provider value={value}>
