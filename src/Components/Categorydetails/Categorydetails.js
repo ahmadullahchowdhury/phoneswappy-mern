@@ -3,6 +3,7 @@ import { useLoaderData, Link } from "react-router-dom";
 
 const Categorydetails = () => {
   const [products, setProducts] = useState([]);
+  const [productSingle, setProductSingle] = useState('');
   const data = useLoaderData();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const Categorydetails = () => {
       });
   }, [data.category_id]);
 
+  console.log(productSingle)
   return (
     <div>
       <h1>This is </h1>
@@ -47,8 +49,8 @@ const Categorydetails = () => {
                     Original Price: {product.product_original_price}
                   </div>
                 </div>
-                <label htmlFor="my-modal-6" className="btn">
-                  open modal
+                <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
+                  Book Now
                 </label>
               </div>
             </div>
@@ -61,7 +63,7 @@ const Categorydetails = () => {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
+          {productSingle.product_name}
           </h3>
           <form className="card-body">
             <div className="form-control">
@@ -77,11 +79,11 @@ const Categorydetails = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Meeting Location</span>
               </label>
               <input
                 type="password"
-                placeholder="Password"
+                placeholder="Meeting Location"
                 name="password"
                 className="input input-bordered"
               />
@@ -92,8 +94,8 @@ const Categorydetails = () => {
             </div>
           </form>
           <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">
-              Yay!
+            <label htmlFor="my-modal-6" className="btn btn-warning">
+              Close
             </label>
           </div>
         </div>
