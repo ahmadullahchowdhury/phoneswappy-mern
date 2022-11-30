@@ -70,8 +70,8 @@ const Categorydetails = () => {
           <h1>Your Name:{user.displayName}</h1>
           <h1>Your Email:{user.email}</h1>
           <h1>Resale Price:{productSingle.product_resale_price}</h1>
-              <h1>To Book the Product Please Give Your Location & Phone Number</h1>
           <form className="card-body">
+              <h1>To Book the Product Please Give Your Location & Phone Number</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Phone Number</span>

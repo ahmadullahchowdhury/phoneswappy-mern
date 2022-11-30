@@ -61,7 +61,7 @@ function App() {
         },
         {
           path: "/dashboard",
-          element: <Dashboard></Dashboard>,
+          element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
           errorElement: <Error></Error>,
           children: [
 
