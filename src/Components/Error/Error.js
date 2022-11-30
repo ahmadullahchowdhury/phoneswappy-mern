@@ -6,6 +6,7 @@ const Error = () => {
     return (
         <div>
             <p className='text-5xl font-bold m-7 p-7' >Page not found</p>
+            <img src='error404.png' alt='error'></img>
         </div>
     );
 };
