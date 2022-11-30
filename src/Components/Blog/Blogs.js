@@ -23,10 +23,7 @@ const Blogs = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                    There are four ways we can manage  state you React apps: Local state, Global state, Server state, URL state. useContext, useReducer, useState are some of the many ways we can manage state in React App.
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -38,10 +35,7 @@ const Blogs = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                    After the ES6 updates, JavaScript allowed for “prototypal inheritance”, meaning that objects and methods can be shared, extended, and copied. prototypical inheritance refers to the ability to access object properties from another object. Prototypical inheritance allows us to reuse the properties or methods from one JavaScript object to another through a reference pointer function. The Object.prototype is on top of the prototype inheritance chain.  Date objects, Array objects, and Player objects all inherit from Object.prototype.
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -53,10 +47,9 @@ const Blogs = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
+                    Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages. we should  write unit tests because
+Well-written unit tests act as documentation for code. Unit tests save time and money. Unit tests save time and money.
+
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>
@@ -68,9 +61,7 @@ const Blogs = () => {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                     <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
+                    Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option Angular has a steep learning curve, considering it is a complete solution, and mastering Angular requires you to learn associated concepts like TypeScript and MVC. React is based on JavaScript, but it’s mostly combined with JSX (JavaScript XML), a syntax extension that allows you to create elements that contain HTML and JavaScript at the same time
                     </p>
                 </AccordionItemPanel>
             </AccordionItem>

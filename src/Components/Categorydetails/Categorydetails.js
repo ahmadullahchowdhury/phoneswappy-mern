@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { fireAuthContext } from "../../Context/Context";
 
 const Categorydetails = () => {
+    const { user } = useContext(fireAuthContext)
   const [products, setProducts] = useState([]);
   const [productSingle, setProductSingle] = useState('');
   const data = useLoaderData();
@@ -65,15 +67,19 @@ const Categorydetails = () => {
           <h3 className="font-bold text-lg">
           {productSingle.product_name}
           </h3>
+          <h1>Your Name:{user.displayName}</h1>
+          <h1>Your Email:{user.email}</h1>
+          <h1>Resale Price:{productSingle.product_resale_price}</h1>
+              <h1>To Book the Product Please Give Your Location & Phone Number</h1>
           <form className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">{}</span>
+                <span className="label-text">Phone Number</span>
               </label>
               <input
-                type="email"
-                placeholder="Email"
-                name="email"
+                type="text"
+                placeholder="Phone Number"
+                name="phone_number"
                 className="input input-bordered"
               />
             </div>
@@ -84,13 +90,13 @@ const Categorydetails = () => {
               <input
                 type="password"
                 placeholder="Meeting Location"
-                name="password"
+                name="meeting_location"
                 className="input input-bordered"
               />
               <p className="text-orange-700 p-3"></p>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary m-2">Submit</button>
+              <button className="btn btn-primary m-2">Confirm Booking</button>
             </div>
           </form>
           <div className="modal-action">
