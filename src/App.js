@@ -15,6 +15,7 @@ import Allbuyer from './Components/Allbuyer/Allbuyer';
 import Reporteditems from './Components/Reporteditems/Reporteditems';
 import Blogs from './Components/Blog/Blogs';
 import Categorydetails from './Components/Categorydetails/Categorydetails';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 // import Blog from './Components/Blog/Blog';
 // import Home from './Components/Home/Home';
 // import AddService from './Components/AddService/AddService';
@@ -54,7 +55,7 @@ function App() {
         },
         {
           path: "/category/:id",
-          element: <Categorydetails></Categorydetails> ,
+          element:   <PrivateRoute><Categorydetails></Categorydetails></PrivateRoute>  ,
           loader :({params}) => fetch(`http://localhost:5000/category/${params.id}`),
           errorElement: <Error></Error>
         },
