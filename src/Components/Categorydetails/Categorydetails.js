@@ -71,7 +71,7 @@ const Categorydetails = () => {
 
   return (
     <div>
-      <h1>This is </h1>
+      <h1 className="text-4xl m-3">This is {products[0]?.product_category_name} category </h1>
       {
         <div className="grid grid-cols-1  md:grid-cols-3 content-center ">
           {products.map((product) => (
@@ -100,6 +100,9 @@ const Categorydetails = () => {
                   <div className="badge badge-outline">
                     Original Price: {product.product_original_price}
                   </div>
+                  <p className=" ">
+                    Usage: {product.product_years_of_use}  year
+                  </p>
                 </div>
 
                 {/* product?.is_sold === 'true' ? 

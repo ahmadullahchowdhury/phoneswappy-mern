@@ -144,7 +144,7 @@ const Register = () => {
                 <select onChange={(event) => roleSelector(event.target.value)}
         value={currentRole} className="select w-full max-w-xs" required > 
                   <option disabled selected>
-                    Pick your favorite Simpson
+                    Please Select an option
                   </option>
                   <option>Buyer </option>
                   <option>Seller</option>

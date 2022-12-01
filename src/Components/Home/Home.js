@@ -62,7 +62,6 @@ const Home = () => {
               <p className="mb-5">
               SWAP is the combination of first ever e-commerce and re-commerce marketplace in Bangladesh where customers can purchase anything by personalized orders as well as sell their unneeded/surplus products such as smartphones, laptops, appliances, vehicles, etc. and exchange also.
 
-.
               </p>
               
             </div>
