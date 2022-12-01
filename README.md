@@ -10,7 +10,6 @@ This this a MERN project on hosted on Firebase. This is a single page applicatio
 
 This Project is a CRUD project. Here i implemented Create, Read, Update and Delete operation by using POST,GET, DELETE, PATCH method. 
 
-In this project A user can sign in with email password or can sign in with google account. Without login , a user can see review of the  services but to review of a service  she/he have to sign in first. Once signed in, he/she can see two more options My Reviews and add service. Clicking on My reviews will see all reviews posted by him/herself. Where he or she can update or delete here review. In Add service he/she can also add service to the existing service list.  
 
 
 

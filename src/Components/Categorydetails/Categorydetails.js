@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 import { fireAuthContext } from "../../Context/Context";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Categorydetails = () => {
-    const { user } = useContext(fireAuthContext)
+  const { user } = useContext(fireAuthContext);
   const [products, setProducts] = useState([]);
-  const [productSingle, setProductSingle] = useState('');
+  const [productSingle, setProductSingle] = useState("");
   const data = useLoaderData();
 
   useEffect(() => {
@@ -18,7 +20,55 @@ const Categorydetails = () => {
       });
   }, [data.category_id]);
 
-  console.log(productSingle)
+  const confirmBooking = (e) => {
+    e.preventDefault();
+    const phone = e.target.phone.value;
+    const location = e.target.location.value;
+    console.log(productSingle.is_sold);
+
+    const updatedIsSold = {
+      is_sold: "true",
+    };
+    console.log(updatedIsSold);
+
+    fetch(
+      `https://phone-resale-server.vercel.app/products/${productSingle._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedIsSold),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Booked Successfully", { autoClose: 1000 });
+      })
+      .catch((err) => console.error(err));
+
+    // const bookingDb = {
+    //     phone,
+    //     location
+    // }
+    // console.log(bookingDb);
+
+    // fetch("https://phone-resale-server.vercel.app/bookings", {
+    //     method: "POST",
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     body: JSON.stringify(bookingDb),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+
+    //     })
+    //     .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <h1>This is </h1>
@@ -51,10 +101,35 @@ const Categorydetails = () => {
                     Original Price: {product.product_original_price}
                   </div>
                 </div>
-                <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
+
+                {/* product?.is_sold === 'true' ? 
+                    <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
+                  Book Now
+                </label> : <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
+                  Booked
+                </label> */}
+
+                {/* <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
+                  Book Now
+                </label> */}
+              </div>
+              {product?.is_sold === "false" ? (
+                <label
+                  onClick={() => setProductSingle(product)}
+                  htmlFor="my-modal-6"
+                  className="btn btn-accent"
+                >
                   Book Now
                 </label>
-              </div>
+              ) : (
+                <label
+                  
+                  htmlFor="my-modal-6"
+                  className="btn btn-info btn-disabled text-white"
+                >
+                  Booked
+                </label>
+              )}
             </div>
           ))}
         </div>
@@ -64,14 +139,14 @@ const Categorydetails = () => {
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">
-          {productSingle.product_name}
-          </h3>
+          <h3 className="font-bold text-lg">{productSingle.product_name}</h3>
           <h1>Your Name:{user.displayName}</h1>
           <h1>Your Email:{user.email}</h1>
           <h1>Resale Price:{productSingle.product_resale_price}</h1>
-          <form className="card-body">
-              <h1>To Book the Product Please Give Your Location & Phone Number</h1>
+          <form onSubmit={confirmBooking} className="card-body">
+            <h1>
+              To Book the Product Please Give Your Location & Phone Number
+            </h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Phone Number</span>
@@ -79,7 +154,7 @@ const Categorydetails = () => {
               <input
                 type="text"
                 placeholder="Phone Number"
-                name="phone_number"
+                name="phone"
                 className="input input-bordered"
               />
             </div>
@@ -88,13 +163,14 @@ const Categorydetails = () => {
                 <span className="label-text">Meeting Location</span>
               </label>
               <input
-                type="password"
+                type="text"
                 placeholder="Meeting Location"
-                name="meeting_location"
+                name="location"
                 className="input input-bordered"
               />
               <p className="text-orange-700 p-3"></p>
             </div>
+
             <div className="form-control mt-6">
               <button className="btn btn-primary m-2">Confirm Booking</button>
             </div>
@@ -106,6 +182,7 @@ const Categorydetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer autoClose={1000} />
     </div>
   );
 };

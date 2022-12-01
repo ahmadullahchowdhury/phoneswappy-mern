@@ -7,25 +7,17 @@ const Header = () => {
 
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [ userdata, setUserData] = useState('')
-  const  navigate = useNavigate()
-
+  const [userdata, setUserData] = useState("");
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     userSingOut()
       .then(() => {
-        navigate("/login")
+        navigate("/login");
       })
-      .catch((error) => {
-        
-      });
-      navigate(from, {replace: true})
+      .catch((error) => {});
+    navigate(from, { replace: true });
   };
-
-
-
-
-
 
   return (
     <div>
@@ -90,12 +82,15 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <>
-          <Link to="/dashboard" className="btn">
-            Dashboard
-          </Link>
-          <Link to="/blog" className="btn">
-              Blog
-            </Link>
+              {user?.email ? (
+                <Link to="/dashboard" className="btn">
+                  Dashboard
+                </Link>
+              ) : null}
+
+              <Link to="/blog" className="btn">
+                Blog
+              </Link>
             </>
 
             {/* <li>
@@ -104,31 +99,25 @@ const Header = () => {
             <li>
               <a>Item 3</a>
             </li> */}
-
-
- 
           </ul>
         </div>
         <div className="navbar-end">
-            {
-                user?.email ? (
-                    <>
-                                    <Link onClick={handleSignOut} className="btn">
-              Log out
-            </Link>
-                    </>
-                ) : (
-                    <>
-                             <Link to="/login" className="btn">
-            Login
-          </Link>
-          <Link to="/register" className="btn">
-            Register
-          </Link>
-                    </>
-                )
-            }
- 
+          {user?.email ? (
+            <>
+              <Link onClick={handleSignOut} className="btn btn-warning">
+                Log out
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+              <Link to="/register" className="btn">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
