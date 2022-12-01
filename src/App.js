@@ -44,7 +44,7 @@ function App() {
         },
         {
           path: "/",
-          loader :() => fetch(`http://localhost:5000/cat`),
+          loader :() => fetch(`https://phone-resale-server.vercel.app/cat`),
           element: <Home></Home>,
           errorElement: <Error></Error>
         },
@@ -56,7 +56,7 @@ function App() {
         {
           path: "/category/:id",
           element:   <PrivateRoute><Categorydetails></Categorydetails></PrivateRoute>  ,
-          loader :({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+          loader :({params}) => fetch(`https://phone-resale-server.vercel.app/category/${params.id}`),
           errorElement: <Error></Error>
         },
         {

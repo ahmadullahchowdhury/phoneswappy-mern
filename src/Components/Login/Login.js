@@ -16,7 +16,7 @@ const Login = () => {
   const { user, signUser, googleLoginPopUp } =  useContext(fireAuthContext)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user?email=${user?.email}`)
+    fetch(`https://phone-resale-server.vercel.app/user?email=${user?.email}`)
       .then((response) => response.json())
       .then((data) => {
         setDbEmail(data.email)
@@ -64,7 +64,7 @@ const Login = () => {
             return 0
         }else{
 
-            fetch("http://localhost:5000/users", {
+            fetch("https://phone-resale-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

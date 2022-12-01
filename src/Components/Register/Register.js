@@ -51,7 +51,7 @@ const Register = () => {
 
       profileUpdate(profile)
         .then(() => {
-          fetch("http://localhost:5000/users", {
+          fetch("https://phone-resale-server.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

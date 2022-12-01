@@ -10,7 +10,7 @@ const Categorydetails = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/product?product_category_id=${data.category_id}`
+      `https://phone-resale-server.vercel.app/product?product_category_id=${data.category_id}`
     )
       .then((res) => res.json())
       .then((data) => {

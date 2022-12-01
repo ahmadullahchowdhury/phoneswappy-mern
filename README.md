@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+# Welcome to Spark Photography 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## To see the live site please go to (https://phone-resale-mern-project.web.app/)
 
-## Available Scripts
 
-In the project directory, you can run:
+The main objective of project is to create a functional website. This is a website for selling second hand phones. During registration a user can select his/her role, buyer or seller. If he/she create account through Social login it will be automatically buyer account. There is also admin dashboard where admin can see all buyer and seller. A buyer can book a phone. A seller can add a product and advertise product. 
 
-### `npm start`
+This this a MERN project on hosted on Firebase. This is a single page application in which mongodb is used as NoSQL DataBase, By using node and express and monogodb , I made an API, which hosted on Vercel and used in this project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This Project is a CRUD project. Here i implemented Create, Read, Update and Delete operation by using POST,GET, DELETE, PATCH method. 
 
-### `npm test`
+In this project A user can sign in with email password or can sign in with google account. Without login , a user can see review of the  services but to review of a service  she/he have to sign in first. Once signed in, he/she can see two more options My Reviews and add service. Clicking on My reviews will see all reviews posted by him/herself. Where he or she can update or delete here review. In Add service he/she can also add service to the existing service list.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<ul>
+  <li>React Router and Contex Api is used for router and data passing</li>
+  <li>In this project I have used DaisyUI as my CSS framework component library.</li>
+  <li>This site is fully mobile responsive</li>
+  <li>Firebase authentication system is used. Google signup and Email/password authentication is also implemented.  </li>
+  <li>Many third party module like: react-photo-view, react-toast, react-accordion is also used  </li>
+  <li> Mongodb is used or database </li>
+  <li> Vercel is used for server deploy </li>
+</ul>

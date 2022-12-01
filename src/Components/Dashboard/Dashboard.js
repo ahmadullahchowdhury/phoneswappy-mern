@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [userdata, setUserData] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user?email=${user?.email}`)
+    fetch(`https://phone-resale-server.vercel.app/user?email=${user?.email}`)
       .then((response) => response.json())
       .then((data) => {
         setUserData(data);

@@ -13,7 +13,7 @@ const Allbuyer = () => {
         // console.log(proceed)
         
         if(proceed){
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://phone-resale-server.vercel.app/users/${id}`, {
                 method: "DELETE" 
             }).then(res => res.json()).then(data => {
                 console.log(data)
@@ -29,7 +29,7 @@ const Allbuyer = () => {
     }
 
     useEffect(() => {
-      fetch(`http://localhost:5000/usersingle?userRole=Buyer`)
+      fetch(`https://phone-resale-server.vercel.app/usersingle?userRole=Buyer`)
         .then((res) => res.json())
         .then((data) => {
             setBuyers(data);
@@ -37,7 +37,11 @@ const Allbuyer = () => {
     }, []);
 
    const handleDeleteUser = () => {
-            console.log('clicked')
+    deleteUser().then(() => {
+        console.log('deleted');
+      }).catch((error) => {
+        console.log(error);
+      });
     }
   
     console.log(buyers);
@@ -50,7 +54,7 @@ const Allbuyer = () => {
   
   <p className="m-2 border-2 rounded-xl p-2 border-indigo-600">{buyer.name}</p>
   <p className="m-2 border-2 rounded-xl p-2 border-indigo-600 ">{buyer.email}</p>
-  <p onClick={  () => handleDelete(buyer.name, buyer._id)  }className="btn  btn-error">Delete Buyer</p>
+  <p onClick={  () => { handleDelete(buyer.name, buyer._id) ; handleDeleteUser() } }className="btn  btn-error">Delete Buyer</p>
   
           </div> )
        }

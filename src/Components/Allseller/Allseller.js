@@ -6,7 +6,7 @@ const Allseller = () => {
   const [sellers, setSellers] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/usersingle?userRole=Seller`)
+    fetch(`https://phone-resale-server.vercel.app/usersingle?userRole=Seller`)
       .then((res) => res.json())
       .then((data) => {
         setSellers(data);
@@ -18,7 +18,7 @@ const Allseller = () => {
     // console.log(proceed)
     
     if(proceed){
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://phone-resale-server.vercel.app/users/${id}`, {
             method: "DELETE" 
         }).then(res => res.json()).then(data => {
             console.log(data)
