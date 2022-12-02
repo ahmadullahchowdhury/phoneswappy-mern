@@ -47,7 +47,7 @@ const Allbuyer = () => {
     console.log(buyers);
     return (
         <div>
-        <h1  className="text-3xl text-bolder m-4"> All Seller is here</h1>
+        <h1  className="text-3xl text-bolder m-4"> All Buyer is here</h1>
         <div className="grid grid-cols-1 justify-center">
        {
           buyers.map(buyer => <div className='flex justify-center'>
