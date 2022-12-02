@@ -3,6 +3,7 @@ import { useLoaderData, Link } from "react-router-dom";
 import { fireAuthContext } from "../../Context/Context";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BeakerIcon , CheckBadgeIcon } from '@heroicons/react/24/solid'
 
 const Categorydetails = () => {
   const { user } = useContext(fireAuthContext);
@@ -85,8 +86,8 @@ const Categorydetails = () => {
                 </h2>
                 <h2 className="">
                   Seller Name: {product.seller_name}
-                  <div className="badge badge-secondary m-3">
-                    {product.is_verified === "true" ? "Verified" : "X"}
+                  <div className="badge  m-3">
+                    {product.is_verified === "true" ? <CheckBadgeIcon className="h-6 w-6 text-blue-500"/> : null}
                   </div>
                 </h2>
                 <h2 className="">
