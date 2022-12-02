@@ -1,10 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { fireAuthContext } from "../../Context/Context";
-import { NavLink, Link, useNavigate, useLocation , Outlet} from "react-router-dom";
+import {
+  NavLink,
+  Link,
+  useNavigate,
+  useLocation,
+  Outlet,
+} from "react-router-dom";
 
 const Dashboard = () => {
-  const { user, userSingOut } = useContext(fireAuthContext);
+  const { user, userSingOut  } = useContext(fireAuthContext);
   const [userdata, setUserData] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  
 
   useEffect(() => {
     fetch(`https://phone-resale-server.vercel.app/user?email=${user?.email}`)
@@ -12,13 +21,21 @@ const Dashboard = () => {
       .then((data) => {
         setUserData(data);
         console.log(data);
+        setLoading(false)
+        
       });
   }, [user?.email]);
+  
 
   console.log(userdata.userRole);
 
   return (
     <div>
+        {
+                loading? 
+                  <button className="btn loading">loading</button> : null
+                
+        }
       {userdata?.userRole === "Buyer" ? (
         <>
           <Link to="/dashboard/myorders" className="btn">
@@ -49,22 +66,11 @@ const Dashboard = () => {
             Reported Items
           </Link>
         </>
-      ) : (
-        <>
-          <Link to="/blog" className="btn">
-            Blog
-          </Link>
-          {/* <Link to="/addservice" className="btn">
-              All Buyers
-            </Link>
-            <Link to="/addservice" className="btn">
-              Reported Items
-            </Link> */}
-        </>
-      )}
-       <Outlet></Outlet>
+      ) : 
+        null
+      }
+      <Outlet></Outlet>
     </div>
-    
   );
 };
 

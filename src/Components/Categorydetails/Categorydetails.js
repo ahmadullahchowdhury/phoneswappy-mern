@@ -105,16 +105,7 @@ const Categorydetails = () => {
                   </p>
                 </div>
 
-                {/* product?.is_sold === 'true' ? 
-                    <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
-                  Book Now
-                </label> : <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
-                  Booked
-                </label> */}
 
-                {/* <label onClick={ () => setProductSingle(product)} htmlFor="my-modal-6" className="btn btn-accent">
-                  Book Now
-                </label> */}
               </div>
               {product?.is_sold === "false" ? (
                 <label

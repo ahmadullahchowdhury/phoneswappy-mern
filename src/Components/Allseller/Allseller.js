@@ -23,11 +23,7 @@ const Allseller = () => {
         }).then(res => res.json()).then(data => {
             console.log(data)
             toast.success("Deleted Successfully", { autoClose: 1000 });
-            // if(data.deletedCount > 0) {
 
-            //     const remaining = displayEmail.filter(disEmail => disEmail._id !== id )
-            //     setDisplayEmail(remaining)
-            // }
         }).catch((err) => console.error(err));
         
     }

@@ -10,7 +10,7 @@ const Allbuyer = () => {
 
     const handleDelete = ( name, id) => {
         const proceed = window.confirm(`Are you sure to delete this: ${name}`)
-        // console.log(proceed)
+
         
         if(proceed){
             fetch(`https://phone-resale-server.vercel.app/users/${id}`, {
@@ -18,11 +18,7 @@ const Allbuyer = () => {
             }).then(res => res.json()).then(data => {
                 console.log(data)
                 toast.success("Deleted Successfully", { autoClose: 1000 });
-                // if(data.deletedCount > 0) {
-    
-                //     const remaining = displayEmail.filter(disEmail => disEmail._id !== id )
-                //     setDisplayEmail(remaining)
-                // }
+
             }).catch((err) => console.error(err));
             
         }
@@ -34,7 +30,7 @@ const Allbuyer = () => {
         .then((data) => {
             setBuyers(data);
         });
-    }, []);
+    }, [buyers]);
 
    const handleDeleteUser = () => {
     deleteUser().then(() => {
