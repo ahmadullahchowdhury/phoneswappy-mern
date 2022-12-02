@@ -4,7 +4,11 @@
 
 adminEmail: <kowcher@gmail.com>
 
+
 adminPassword: <'kowcher'>
+
+adminPassword: kowcher
+
 
 
 The main objective of project is to create a functional website. This is a website for selling second hand phones. During registration a user can select his/her role, buyer or seller. If he/she create account through Social login it will be automatically buyer account. There is also admin dashboard where admin can see all buyer and seller. A buyer can book a phone. A seller can add a product and advertise product. 
