@@ -1,4 +1,4 @@
-# Welcome to Spark Photography 
+# Welcome to PhoneSwappy
 
 ## To see the live site please go to (https://phone-resale-mern-project.web.app/)
 
